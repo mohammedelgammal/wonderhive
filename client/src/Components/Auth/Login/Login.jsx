@@ -1,5 +1,11 @@
 import { useState } from "react";
 
+// Libraries
+import axios from "axios";
+
+// endPoints
+import endPoints from "../../../data/endPoints";
+
 // Styles
 import Style from "./Login.module.css";
 
@@ -10,13 +16,15 @@ const Login = () => {
     }),
     submitFormhandler = (e) => {
       e.preventDefault();
-      console.log(formData);
+      axios.post(endPoints.auth.login, formData).then((err, res) => {
+        res ? console.log(res) : console.log("Error is: ", err);
+      });
     };
 
   return (
     <div className={Style.login}>
       <h1>Login</h1>
-      <form>
+      <form onSubmit={submitFormhandler}>
         <input
           className={Style.username}
           type="text"
@@ -36,10 +44,7 @@ const Login = () => {
             setFormData({ ...formData, password: e.target.value })
           }
         />
-        <button
-          disabled={!formData.password || !formData.username}
-          onClick={submitFormhandler}
-        >
+        <button disabled={!formData.password || !formData.username}>
           Login
         </button>
       </form>

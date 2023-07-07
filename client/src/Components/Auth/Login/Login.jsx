@@ -17,7 +17,11 @@ const Login = () => {
     submitFormhandler = (e) => {
       e.preventDefault();
       axios.post(endPoints.auth.login, formData).then((err, res) => {
-        res ? console.log(res) : console.log("Error is: ", err);
+        if (res) {
+          localStorage.setItem("token", res.data.token);
+        } else {
+          throw new Error(err);
+        }
       });
     };
 

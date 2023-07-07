@@ -11,18 +11,20 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Recipes />,
-  },
-  {
-    path: "/saved-recipes",
-    element: <SavedRecipes />,
-  },
-  {
-    path: "/auth/login",
-    element: <Login />,
-  },
-  {
-    path: "/auth/register",
-    element: <Register />,
+    children: [
+      {
+        path: "/saved-recipes",
+        element: <SavedRecipes />,
+      },
+      {
+        path: "/auth/login",
+        element: <Login />,
+      },
+      {
+        path: "/auth/register",
+        element: <Register />,
+      },
+    ],
   },
 ]);
 

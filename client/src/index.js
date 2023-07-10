@@ -46,6 +46,14 @@ class Node {
       }
     }
   }
+  findNode(value) {
+    for (const child of this.children) {
+      if (child.value === value) return child;
+      const grandChild = child.findNode(value);
+      if (grandChild) return grandChild;
+    }
+    return null;
+  }
 }
 class Tree {
   constructor(rootValue) {
@@ -56,6 +64,9 @@ class Tree {
   }
   remove(path) {
     this.root.removeChildNode(path);
+  }
+  find(value) {
+    return this.root.findNode(value);
   }
 }
 
@@ -69,10 +80,10 @@ fileSystem.add("src/containers");
 fileSystem.add("src/containers");
 fileSystem.add("src/containers");
 fileSystem.add("src/common");
-fileSystem.add("src/common/navbar");
 
-fileSystem.remove("documents/readme.md");
-fileSystem.remove("src");
+fileSystem.add("src/common/navbar");
+fileSystem.add("src/common/navbar/navbar.jsx");
+console.log(fileSystem.find("components"));
 
 console.log(fileSystem);
 

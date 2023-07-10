@@ -1,6 +1,3 @@
-// Components
-import { Link } from "react-router-dom";
-
 // Styles
 import Style from "./Navbar.module.css";
 
@@ -9,5 +6,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
-segments = ["src", "assets", "css"];

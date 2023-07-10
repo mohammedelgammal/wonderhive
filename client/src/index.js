@@ -13,31 +13,19 @@ class Node {
     this.parent = parent;
   }
   addChildNode(path) {
-    const segments = path.split("/");
     if (path.length) {
-      if (!this.children.length) {
+      const segments = path.split("/");
+      const newPath = segments.slice(1).join("/");
+      const targetNode = this.children.find(
+        (node) => node.value === segments[0]
+      );
+      if (targetNode) {
+        targetNode.addChildNode(newPath);
+      } else {
         const newNode = new Node(segments[0], this);
         this.children.push(newNode);
-        const newPath = segments.slice(1).join("/");
         newNode.addChildNode(newPath);
-      } else {
-        const targetNode = this.children.find(
-          (node) => node.value === segments[0]
-        );
-        if (targetNode) {
-          console.log("matching node is", targetNode);
-          const newPath = segments.slice(1).join("/");
-          targetNode.addChildNode(newPath);
-        } else {
-          console.log("no matching nodes");
-          const newNode = new Node(segments[0], this);
-          this.children.push(newNode);
-          const newPath = segments.slice(1).join("/");
-          newNode.addChildNode(newPath);
-        }
       }
-    } else {
-      return;
     }
   }
   removeChildNode(value) {
@@ -60,6 +48,12 @@ fileSystem.add("public/index.js");
 fileSystem.add("documents/readme.md");
 fileSystem.add("documents/manifest.md");
 fileSystem.add("src/assets/css");
+fileSystem.add("src/components");
+fileSystem.add("src/containers");
+fileSystem.add("src/containers");
+fileSystem.add("src/containers");
+fileSystem.add("src/common");
+fileSystem.add("src/common/navbar");
 console.log(fileSystem.root);
 
 root.render(

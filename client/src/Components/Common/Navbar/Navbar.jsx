@@ -5,12 +5,9 @@ import { Link } from "react-router-dom";
 import Style from "./Navbar.module.css";
 
 const Navbar = () => {
-  return (
-    <div className={Style.navbar}>
-      <h3>Recipe Application</h3>
-      <div className={Style.links}></div>
-    </div>
-  );
+  return <div className={Style.navbar}></div>;
 };
 
 export default Navbar;
+
+segments = ["src", "assets", "css"];

@@ -28,9 +28,21 @@ class Node {
       }
     }
   }
-  removeChildNode(value) {
-    const targetIndex = this.children.indexOf(value);
-    this.children.slice(targetIndex);
+  removeChildNode(path) {
+    if (path.length) {
+      const segments = path.split("/");
+      const targetNode = this.children.find(
+        (node) => node.value === segments[0]
+      );
+      if (targetNode) {
+        if (targetNode.value === segments[segments.length - 1]) {
+          const targetIndex = this.children.indexOf(targetNode);
+          return this.children.splice(targetIndex, 1);
+        }
+        const newPath = segments.slice(1).join("/");
+        targetNode.removeChildNode(newPath);
+      }
+    }
   }
 }
 class Tree {
@@ -40,7 +52,9 @@ class Tree {
   add(path) {
     this.root.addChildNode(path);
   }
-  remove(path) {}
+  remove(path) {
+    this.root.removeChildNode(path);
+  }
 }
 
 const fileSystem = new Tree("/");
@@ -54,7 +68,12 @@ fileSystem.add("src/containers");
 fileSystem.add("src/containers");
 fileSystem.add("src/common");
 fileSystem.add("src/common/navbar");
-console.log(fileSystem.root);
+
+fileSystem.remove("documents/readme.md");
+fileSystem.remove("src");
+fileSystem.remove("public");
+
+console.log(fileSystem);
 
 root.render(
   <React.StrictMode>

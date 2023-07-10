@@ -41,6 +41,8 @@ class Node {
         }
         const newPath = segments.slice(1).join("/");
         targetNode.removeChildNode(newPath);
+      } else {
+        throw Error("Could not find the node");
       }
     }
   }
@@ -71,7 +73,6 @@ fileSystem.add("src/common/navbar");
 
 fileSystem.remove("documents/readme.md");
 fileSystem.remove("src");
-fileSystem.remove("public");
 
 console.log(fileSystem);
 

@@ -28,6 +28,18 @@ class Node {
       this.leftChildNode = newNode;
     }
   }
+  findChildNode(value) {
+    console.log(this.value);
+    if (value === this.value) return this;
+    if (value >= this.value && this.rightChildNode) {
+      return this.rightChildNode.findChildNode(value);
+    }
+    if (value < this.value && this.leftChildNode) {
+      return this.leftChildNode.findChildNode(value);
+    }
+  }
+
+  removeChildNode(value) {}
 }
 
 class BinaryTree {
@@ -37,16 +49,24 @@ class BinaryTree {
   add(value) {
     this.root.addChildNode(value);
   }
+  find(value) {
+    return this.root.findChildNode(value);
+  }
+  remove() {}
 }
 
 const newTree = new BinaryTree(10);
 
-newTree.add(11);
-newTree.add(20);
-newTree.add(9);
-newTree.add(5);
-newTree.add(21);
+newTree.add(14);
+newTree.add(6);
+newTree.add(4);
 newTree.add(8);
+newTree.add(12);
+newTree.add(16);
+newTree.add(3);
+newTree.add(5);
+
+console.log(newTree.find(3));
 
 console.log(newTree);
 

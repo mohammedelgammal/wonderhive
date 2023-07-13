@@ -13,7 +13,6 @@ class Node {
     this.rightChildNode = null;
     this.leftChildNode = null;
   }
-
   addChildNode(value) {
     const newNode = new Node(value, this);
     if (value >= this.value) {
@@ -37,8 +36,22 @@ class Node {
       return this.leftChildNode.findChildNode(value);
     }
   }
+  isLeafNode(node) {
+    return !node.leftChildNode && !node.rightChildNode;
+  }
   removeChildNode(value) {
-    console.log(value);
+    const targetNode = this.findChildNode(value);
+    const parentNode = targetNode.parent;
+    if (targetNode) {
+      if (this.isLeafNode(targetNode)) {
+        if (targetNode.value >= parentNode.value)
+          parentNode.rightChildNode = null;
+        if (targetNode.value < parentNode.value)
+          parentNode.leftChildNode = null;
+      }
+    } else {
+      throw new Error("Could not find a match!");
+    }
   }
 }
 
@@ -68,9 +81,9 @@ newTree.add(16);
 newTree.add(3);
 newTree.add(5);
 
-newTree.remove(5);
+newTree.remove(16);
 
-console.log(newTree.find(3));
+console.log(newTree.find(5));
 
 console.log(newTree);
 

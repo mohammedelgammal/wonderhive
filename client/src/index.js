@@ -1,4 +1,4 @@
-import React, { Children } from "react";
+import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import { RouterProvider } from "react-router-dom";
@@ -29,7 +29,6 @@ class Node {
     }
   }
   findChildNode(value) {
-    console.log(this.value);
     if (value === this.value) return this;
     if (value >= this.value && this.rightChildNode) {
       return this.rightChildNode.findChildNode(value);
@@ -38,8 +37,9 @@ class Node {
       return this.leftChildNode.findChildNode(value);
     }
   }
-
-  removeChildNode(value) {}
+  removeChildNode(value) {
+    console.log(value);
+  }
 }
 
 class BinaryTree {
@@ -52,7 +52,9 @@ class BinaryTree {
   find(value) {
     return this.root.findChildNode(value);
   }
-  remove() {}
+  remove(value) {
+    this.root.removeChildNode(value);
+  }
 }
 
 const newTree = new BinaryTree(10);
@@ -65,6 +67,8 @@ newTree.add(12);
 newTree.add(16);
 newTree.add(3);
 newTree.add(5);
+
+newTree.remove(5);
 
 console.log(newTree.find(3));
 

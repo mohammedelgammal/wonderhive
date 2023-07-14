@@ -13,6 +13,20 @@ class Node {
     this.rightChildNode = null;
     this.leftChildNode = null;
   }
+  get leftDepth() {
+    if (!this.leftChildNode) return 0;
+    return this.leftChildNode.depth + 1;
+  }
+  get rightDepth() {
+    if (!this.rightChildNode) return 0;
+    return this.rightChildNode.depth + 1;
+  }
+  get depth() {
+    return Math.max(this.leftDepth, this.rightDepth);
+  }
+  get balanceFactor() {
+    return this.leftDepth - this.rightDepth;
+  }
   addChildNode(value) {
     const newNode = new Node(value, this);
     if (value >= this.value) {
@@ -109,6 +123,7 @@ newTree.add(29);
 newTree.remove(30);
 
 console.log(newTree);
+console.log(newTree.find(24).depth);
 
 root.render(
   <React.StrictMode>

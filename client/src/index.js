@@ -39,15 +39,39 @@ class Node {
   isLeafNode(node) {
     return !node.leftChildNode && !node.rightChildNode;
   }
+  findClosestChildNode() {
+    if (!this.leftChildNode) return this;
+    return this.leftChildNode.findClosestChildNode();
+  }
   removeChildNode(value) {
     const targetNode = this.findChildNode(value);
     const parentNode = targetNode.parent;
     if (targetNode) {
       if (this.isLeafNode(targetNode)) {
-        if (targetNode.value >= parentNode.value)
+        if (targetNode.value >= parentNode.value) {
           parentNode.rightChildNode = null;
-        if (targetNode.value < parentNode.value)
+          return;
+        }
+        if (targetNode.value < parentNode.value) {
           parentNode.leftChildNode = null;
+          return;
+        }
+      }
+      if (targetNode.leftChildNode && targetNode.rightChildNode) {
+        const closestChildNode =
+          targetNode.rightChildNode.findClosestChildNode();
+        if (closestChildNode.value !== targetNode.rightChildNode.value) {
+          this.removeChildNode(closestChildNode.value);
+          targetNode.value = closestChildNode.value;
+        } else {
+          targetNode.value = targetNode.rightChildNode.value;
+          targetNode.rightChildNode = targetNode.rightChildNode.rightChildNode;
+        }
+      } else {
+        const childNode = targetNode.leftChildNode || targetNode.rightChildNode;
+        targetNode.value = childNode.value;
+        targetNode.leftChildNode = childNode.leftChildNode;
+        targetNode.rightChildNode = childNode.rightChildNode;
       }
     } else {
       throw new Error("Could not find a match!");
@@ -70,20 +94,19 @@ class BinaryTree {
   }
 }
 
-const newTree = new BinaryTree(10);
+const newTree = new BinaryTree(25);
 
-newTree.add(14);
-newTree.add(6);
-newTree.add(4);
-newTree.add(8);
-newTree.add(12);
-newTree.add(16);
-newTree.add(3);
-newTree.add(5);
+newTree.add(20);
+newTree.add(18);
+newTree.add(24);
+newTree.add(30);
+newTree.add(28);
+newTree.add(32);
+newTree.add(31);
+newTree.add(27);
+newTree.add(29);
 
-newTree.remove(16);
-
-console.log(newTree.find(5));
+newTree.remove(30);
 
 console.log(newTree);
 

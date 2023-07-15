@@ -92,7 +92,6 @@ class Node {
     }
   }
 }
-
 class BinaryTree {
   constructor(value) {
     this.root = new Node(value, null);
@@ -108,22 +107,59 @@ class BinaryTree {
   }
 }
 
-const newTree = new BinaryTree(25);
+class AVLTree extends BinaryTree {
+  add(value) {
+    super.add(value);
+    let targetNode = this.root.findChildNode(value);
+    while (targetNode) {
+      this.balance(targetNode);
+      targetNode = targetNode.parent;
+    }
+  }
+  remove(value) {
+    super.remove(value);
+    this.balance(this.root);
+  }
+  balance(node) {
+    if (node.balanceFactor > 1) {
+      if (node.leftChildNode.rightChildNode) {
+        this.rotateToLeft(node.leftChildNode);
+        this.rotateToRight(node);
+        return;
+      } else {
+        this.rotateToRight(node);
+        return;
+      }
+    } else if (node.balanceFactor < -1) {
+      if (node.rightChildNode.leftChildNode) {
+        this.rotateToRight(node.rightChildNode);
+        this.rotateToLeft(node);
+        return;
+      } else {
+        this.rotateToLeft(node);
+        return;
+      }
+    }
+  }
+  rotateToLeft(node) {
+    
+  }
+  rotateToRight(node) {
+    node.leftChildNode.rightChildNode = node;
+    node = node.leftChildNode;
+  }
+}
 
-newTree.add(20);
-newTree.add(18);
-newTree.add(24);
-newTree.add(30);
-newTree.add(28);
-newTree.add(32);
-newTree.add(31);
-newTree.add(27);
-newTree.add(29);
+const newAvl = new AVLTree(25);
 
-newTree.remove(30);
+newAvl.add(20);
+newAvl.add(30);
+newAvl.add(18);
+newAvl.add(14);
+newAvl.add(28);
+newAvl.add(32);
 
-console.log(newTree);
-console.log(newTree.find(24).depth);
+console.log(newAvl);
 
 root.render(
   <React.StrictMode>

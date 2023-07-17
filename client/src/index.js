@@ -6,50 +6,40 @@ import router from "./data/routes";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-class Node {
-  constructor(value = null, priority = null, next = null) {
-    this.value = value;
-    this.next = next;
-    this.priority = priority;
-  }
-}
-
-class PriorityQueue {
+class Heap {
   constructor() {
-    this.first = null;
+    this.heapNodes = [];
   }
-  enqueue(value, priority) {
-    const newNode = new Node(value, priority);
-    if (!this.first || priority > this.first.priority) {
-      newNode.next = this.first;
-      this.first = newNode;
+  getParent(index) {
+    const parentIndex = Math.floor((index + 1) / 2) - 1;
+    return this.heapNodes[parentIndex];
+  }
+  add(value) {
+    if (!this.heapNodes.length) {
+      this.heapNodes.push(value);
       return;
     }
-    let currentNode = this.first;
-    while (currentNode.next && priority < currentNode.next.priority) {
-      currentNode = currentNode.next;
-    }
-    newNode.next = currentNode;
-    currentNode.next = newNode;
-  }
-  dequeue() {
-    const first = this.first;
-    if (!first) return;
-    this.first = this.first.next;
-    return first;
+    const parent = this.getParent(this.heapNodes.length);
+    if (value > parent) return;
+    this.heapNodes.push(value);
   }
 }
 
-const newQueue = new PriorityQueue();
+const newHeap = new Heap();
 
-newQueue.enqueue("income", 75);
-newQueue.enqueue("study", 99);
-newQueue.enqueue("work", 83);
-newQueue.enqueue("interview", 87);
-// newQueue.enqueue(98);
-// newQueue.enqueue(21);
+newHeap.add(125);
+newHeap.add(85);
+newHeap.add(30);
+newHeap.add(98);
+newHeap.add(65);
+newHeap.add(100);
+newHeap.add(10);
+newHeap.add(90);
+newHeap.add(15);
+newHeap.add(155);
+newHeap.add(28);
 
-console.log(newQueue);
+console.log(newHeap);
 
 root.render(
   <React.StrictMode>

@@ -7,7 +7,7 @@ import { Outlet } from "react-router-dom";
 // Styles
 import Style from "./MainLayout.module.css";
 
-const MainLayout: React.FC = () => {
+const MainLayout: React.FC = (): React.ReactNode => {
   return (
     <div className={Style.mainLayout}>
       <Navbar />

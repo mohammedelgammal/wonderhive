@@ -1,5 +1,6 @@
 //  Components
 import { Sidebar, Footer } from "Layouts";
+import { Container } from "Common";
 
 // Libraries
 import { Outlet } from "react-router-dom";
@@ -7,13 +8,13 @@ import { Outlet } from "react-router-dom";
 // Styles
 import Style from "./AuthLayout.module.css";
 
-const AuthLayout: React.FC = () => {
+const AuthLayout: React.FC = (): React.ReactNode => {
   return (
-    <div className={Style.auth}>
+    <Container baseClassName={Style.admin}>
       <Sidebar />
       <Outlet />
       <Footer />
-    </div>
+    </Container>
   );
 };
 

@@ -1,17 +1,14 @@
 // Components
 import router from "Routing/routerConfig";
 
-// Libraries 
+// Libraries
 import { RouterProvider } from "react-router-dom";
+
 // Styles
 import Style from "./App.module.css";
 
-const App: React.FC = () => {
-  return (
-    <div className={Style.app}>
-      <RouterProvider router={router} />
-    </div>
-  );
+const App: React.FC = (): React.ReactNode => {
+  return <RouterProvider router={router} />;
 };
 
 export default App;

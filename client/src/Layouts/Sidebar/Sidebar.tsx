@@ -1,7 +1,7 @@
 // Styles
 import Style from "./Sidebar.module.css";
 
-const Sidebar = () => {
+const Sidebar: React.FC = (): React.ReactNode => {
   return <div className={Style.sidebar}>This is sidebar</div>;
 };
 

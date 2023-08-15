@@ -1,5 +1,5 @@
 // Components
-import { Navbar, Footer } from "./";
+import { Navbar, Footer } from "../";
 
 // Libraries
 import { Outlet } from "react-router-dom";
@@ -7,7 +7,7 @@ import { Outlet } from "react-router-dom";
 // Styles
 import Style from "./MainLayout.module.css";
 
-const MainLayout = () => {
+const MainLayout: React.FC = () => {
   return (
     <div className={Style.mainLayout}>
       <Navbar />

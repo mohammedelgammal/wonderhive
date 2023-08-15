@@ -1,15 +1,15 @@
 // Components
-import Router from './Routing/'
+import router from "Routing/routerConfig";
 
-// Libraries
+// Libraries 
 import { RouterProvider } from "react-router-dom";
 // Styles
 import Style from "./App.module.css";
 
-const App = () => {
+const App: React.FC = () => {
   return (
     <div className={Style.app}>
-      <RouterProvider router={router}></RouterProvider>
+      <RouterProvider router={router} />
     </div>
   );
 };

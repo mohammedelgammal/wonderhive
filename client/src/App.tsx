@@ -8,7 +8,11 @@ import { RouterProvider } from "react-router-dom";
 import Style from "./App.module.css";
 
 const App: React.FC = (): React.ReactNode => {
-  return <RouterProvider router={router} />;
+  return (
+    <div className={Style.app}>
+      <RouterProvider router={router} />
+    </div>
+  );
 };
 
 export default App;

@@ -14,14 +14,19 @@ const routes = [
     children: [
       {
         path: paths.MAIN.courses,
-        element: <div>This is courses</div>,
+        // element: <div>This is courses</div>,
       },
     ],
   },
   {
     path: paths.AUTH.login,
     element: <AuthLayout />,
-    children: [{ path: paths.AUTH.login, element: <div>Login</div> }],
+    children: [
+      {
+        path: paths.AUTH.login,
+        // element: <div>Login</div>
+      },
+    ],
   },
 ];
 

@@ -21,7 +21,7 @@ const routes = [
   {
     path: paths.AUTH.login,
     element: <AuthLayout />,
-    children: [{ path: "login", element: <div>Login</div> }],
+    children: [{ path: paths.AUTH.login, element: <div>Login</div> }],
   },
 ];
 

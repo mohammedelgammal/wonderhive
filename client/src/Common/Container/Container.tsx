@@ -10,7 +10,7 @@ const Container: React.FC<Props> = ({
   baseClassName,
   children,
 }): React.ReactNode => (
-  <div className={(Style.container, baseClassName)}>{children}</div>
+  <div className={`${Style.container} ${baseClassName}`}>{children}</div>
 );
 
 export default Container;

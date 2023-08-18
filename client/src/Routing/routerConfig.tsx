@@ -1,25 +1,30 @@
 // Components
 import { AuthLayout, MainLayout } from "Layouts";
 
+// Routes
+import paths from "Data/Constants/Routes/paths";
+
 // Libraries
 import { createBrowserRouter } from "react-router-dom";
 
-const router = createBrowserRouter([
+const routes = [
   {
-    path: "/",
+    path: paths.MAIN.homepage,
     element: <MainLayout />,
     children: [
       {
-        path: "courses/",
-        // element: <Courses />,
+        path: paths.MAIN.courses,
+        element: <div>This is courses</div>,
       },
     ],
   },
   {
-    path: "auth/",
+    path: paths.AUTH.login,
     element: <AuthLayout />,
     children: [{ path: "login", element: <div>Login</div> }],
   },
-]);
+];
+
+const router = createBrowserRouter(routes);
 
 export default router;

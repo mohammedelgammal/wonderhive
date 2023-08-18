@@ -1,5 +1,5 @@
 //  Components
-import { Sidebar, Footer } from "Layouts";
+import { Sidebar, Footer, Navbar } from "Layouts";
 import { Container } from "Common";
 
 // Libraries
@@ -11,6 +11,7 @@ import Style from "./AuthLayout.module.css";
 const AuthLayout: React.FC = (): React.ReactNode => {
   return (
     <Container baseClassName={Style.admin}>
+      <Navbar />
       <Sidebar />
       <Outlet />
       <Footer />

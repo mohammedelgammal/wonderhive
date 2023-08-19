@@ -1,5 +1,6 @@
 // Components
 import { AuthLayout, MainLayout } from "Layouts";
+import { Login } from "Features";
 
 // Routes
 import paths from "Data/Constants/Routes/paths";
@@ -18,7 +19,7 @@ const routes = [
     children: [
       {
         path: paths.AUTH.login,
-        // element: <div>Login</div>
+        element: <Login />,
       },
     ],
   },

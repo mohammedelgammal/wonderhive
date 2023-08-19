@@ -11,12 +11,6 @@ const routes = [
   {
     path: paths.MAIN.homepage,
     element: <MainLayout />,
-    children: [
-      {
-        path: paths.MAIN.courses,
-        // element: <div>This is courses</div>,
-      },
-    ],
   },
   {
     path: paths.AUTH.login,

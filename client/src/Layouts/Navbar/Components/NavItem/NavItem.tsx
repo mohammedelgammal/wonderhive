@@ -20,8 +20,15 @@ const NavItem: React.FC<Props> = ({ link, children }): React.ReactNode => {
       <Link className={Style.link} to={link.to}>
         {link.content}
       </Link>
+      <HoverContent content={children} />
     </div>
   );
+};
+
+const HoverContent: React.FC<{ content: React.ReactNode }> = ({
+  content,
+}): React.ReactNode => {
+  return <div className={Style.hoverContent}>{content}</div>;
 };
 
 export default NavItem;

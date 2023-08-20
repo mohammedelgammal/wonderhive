@@ -9,8 +9,10 @@ body {
 }
 
 :root {
-  --navbar_shadow: 0 2px 4px rgba(0, 0, 0, 0.2),
+  --navbar-shadow: 0 2px 4px rgba(0, 0, 0, 0.2),
     0 4px 12px rgba(136, 49, 49, 0.2);
   --navitem-text: #1c1d1f;
   --navitem-hover: #0000c0;
+  --white-color: #ffffff;
+  --border-color: #acacac;
 }

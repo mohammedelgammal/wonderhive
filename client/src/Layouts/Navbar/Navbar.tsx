@@ -10,7 +10,7 @@ const Navbar: React.FC = (): React.ReactNode => {
     <Container baseClassName={Style.navbar}>
       <Logo />
       <NavItem link={{ to: "", content: "Categories" }}>
-        <ul></ul>
+        This is categories
       </NavItem>
     </Container>
   );

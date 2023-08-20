@@ -1,4 +1,5 @@
 .navItem {
+  position: relative;
   display: flex;
   align-items: center;
   height: 100%;
@@ -15,4 +16,11 @@
 
 .link:hover {
   color: var(--navitem-hover);
+}
+
+/* Hover Content */
+.hoverContent {
+  position: absolute;
+  bottom: -20px;
+  left: 0;
 }

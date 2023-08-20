@@ -1,6 +1,6 @@
 // Components
 import { Container } from "Common";
-import { Logo, NavItem } from "./Components";
+import { Logo, NavItem, Categories } from "./Components";
 
 // Styles
 import Style from "./Navbar.module.css";
@@ -10,7 +10,7 @@ const Navbar: React.FC = (): React.ReactNode => {
     <Container baseClassName={Style.navbar}>
       <Logo />
       <NavItem link={{ to: "", content: "Categories" }}>
-        This is categories
+        <Categories />
       </NavItem>
     </Container>
   );

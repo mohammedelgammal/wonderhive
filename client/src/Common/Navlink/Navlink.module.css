@@ -1,0 +1,12 @@
+.link {
+  all: unset;
+  padding-block: 20px;
+  text-decoration: unset;
+  font-family: sans-serif;
+  font-weight: 300;
+  color: var(--navitem-text);
+
+  &:hover {
+    color: var(--navitem-hover);
+  }
+}

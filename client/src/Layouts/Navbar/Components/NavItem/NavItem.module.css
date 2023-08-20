@@ -5,22 +5,18 @@
   height: 100%;
 }
 
-.link {
-  all: unset;
-  padding-block: 20px;
-  text-decoration: unset;
-  font-family: sans-serif;
-  font-weight: 300;
-  color: var(--navitem-text);
-}
-
-.link:hover {
-  color: var(--navitem-hover);
-}
-
-/* Hover Content */
 .hoverContent {
   position: absolute;
   bottom: -20px;
   left: 0;
+  visibility: hidden;
+  opacity: 0;
+  scale: 0.8;
+  transition: all 0.2s ease-out;
+}
+
+.isHovered {
+  visibility: visible;
+  opacity: 1;
+  scale: 1;
 }

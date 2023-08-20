@@ -1,34 +1,35 @@
-// Libraries
-import { Link } from "react-router-dom";
+import { useState } from "react";
+
+// Components
+import { Navlink } from "Common";
+
+// Types
+import { LinkType } from "Types/Common";
 
 // Styles
 import Style from "./NavItem.module.css";
 
-interface Link {
-  content: string | React.ReactNode;
-  to: string;
-}
-
 interface Props {
-  link: Link;
+  link: LinkType;
   children: React.ReactNode;
 }
 
 const NavItem: React.FC<Props> = ({ link, children }): React.ReactNode => {
+  const [isHovered, setIsHovered] = useState<boolean>(false);
+  const isHoveredContent: string = `${Style.hoverContent} ${Style.isHovered}`;
+
   return (
-    <div className={Style.navItem}>
-      <Link className={Style.link} to={link.to}>
-        {link.content}
-      </Link>
-      <HoverContent content={children} />
+    <div
+      className={Style.navItem}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <Navlink link={link} />
+      <div className={isHovered ? isHoveredContent : Style.hoverContent}>
+        {children}
+      </div>
     </div>
   );
-};
-
-const HoverContent: React.FC<{ content: React.ReactNode }> = ({
-  content,
-}): React.ReactNode => {
-  return <div className={Style.hoverContent}>{content}</div>;
 };
 
 export default NavItem;

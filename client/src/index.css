@@ -4,7 +4,13 @@
   box-sizing: border-box;
 }
 
+body {
+  font-size: 14px;
+}
+
 :root {
   --navbar_shadow: 0 2px 4px rgba(0, 0, 0, 0.2),
     0 4px 12px rgba(136, 49, 49, 0.2);
+  --navitem-text: #1c1d1f;
+  --navitem-hover: #0000c0;
 }

@@ -1,28 +1,25 @@
 import express from "express";
+import "dotenv/config";
 import cors from "cors";
 import mongoose from "mongoose";
-import dotenv from "dotenv";
 
-// routes
-import usersRouter from "./routes/users.js";
+// Routes
+import { topicsRoute } from "./Routes/Courses/index";
 
-// config
-dotenv.config();
+// Application
 const app = express();
 
-// middlewares
+// Configuration
 app.use(express.json());
 app.use(cors());
 
-// DB config
-const connection_url = `mongodb+srv://mohammedelgammal:${process.env.DB_PASS}@hives.wqeko1q.mongodb.net/?retryWrites=true&w=majority`;
+// Connection to DB
+mongoose.connect(proces.env.DB_URI);
 
-mongoose.connect(connection_url);
+// Routes
+app.use("/topics", topicsRoute);
 
-// routes
-app.use("/users", usersRouter);
-
-// server listen
+// Port listening
 app.listen(process.env.PORT, () =>
-  console.log(`Server is running on port: ${process.env.PORT}`)
+  console.log("Server is listening on port", process.env.PORT)
 );

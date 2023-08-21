@@ -2,7 +2,7 @@
 import { Schema } from "mongoose";
 
 // Schemas
-import subCategorySchema from "./SubCategories";
+import subCategorySchema from "./SubCategory.js";
 
 const categorySchema = new Schema({
   title: {

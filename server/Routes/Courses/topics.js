@@ -1,10 +1,10 @@
 // Models
-import { TopicModel } from "Models/Course/model";
+import { TopicModel } from "../../Models/Course/models.js";
 
 // Libraries
 import express from "express";
 
-const topicRoute = express.Route();
+const topicRoute = express.Router();
 
 topicRoute.post("/", async (req, res) => {
   try {

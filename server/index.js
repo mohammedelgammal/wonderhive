@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(cors());
 
 // Connection to DB
-mongoose.connect("mongodb://0.0.0.0:27017/", {
+mongoose.connect("mongodb://localhost:27017/", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });

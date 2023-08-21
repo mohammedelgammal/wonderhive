@@ -2,9 +2,6 @@ import express from "express";
 import "dotenv/config";
 import cors from "cors";
 import mongoose from "mongoose";
-import path from "path";
-
-path.resolve("./");
 
 // Routes
 import topicRoute from "./Routes/Courses/topics.js";
@@ -17,7 +14,10 @@ app.use(express.json());
 app.use(cors());
 
 // Connection to DB
-mongoose.connect(process.env.DB_URI);
+mongoose.connect("mongodb://0.0.0.0:27017/", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 // Routes
 app.use("/topics", topicRoute);

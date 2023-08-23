@@ -21,7 +21,7 @@ topicRoute.post("/", async (req, res) => {
     return res.status(201).json({ message: "Topic created successfully!" });
   } catch (error) {
     return res.status(400).json({
-      error: "Your request could not be processed!",
+      error: "Your request could not be processed right now!",
     });
   }
 });

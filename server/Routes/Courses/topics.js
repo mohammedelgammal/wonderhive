@@ -26,9 +26,9 @@ topicRoute.post("/", async (req, res) => {
   }
 });
 
-topicRoute.get("/:title", async (req, res) => {
+topicRoute.get("/", async (req, res) => {
   try {
-    const { title } = req.params;
+    const { title } = req.query;
     const targetTopic = await TopicModel.findOne({ title });
     if (!targetTopic)
       return res.status(404).json({ message: "Topic not found!" });

@@ -14,8 +14,8 @@ topicRoute.post("/", async (req, res) => {
       return res.status(200).json({
         message: "Topic already exists!",
       });
-    const newTopic = new TopicModel({
-      ...targetTopic,
+    const newTopic = TopicModel({
+      title,
     });
     await newTopic.save();
     return res.status(201).json({ message: "Topic created successfully!" });

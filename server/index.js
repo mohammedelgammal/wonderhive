@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(cors());
 
 // Connection to DB
-mongoose.connect("mongodb://localhost:27017/", {
+mongoose.connect("mongodb://127.0.0.1:27017/wonderhive", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });

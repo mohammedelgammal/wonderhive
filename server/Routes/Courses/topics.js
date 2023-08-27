@@ -26,13 +26,13 @@ topicRoute.post("/", async (req, res) => {
   }
 });
 
-topicRoute.get("/", async (req, res) => {
+topicRoute.get("/:title", async (req, res) => {
   try {
-    const { title } = req.body;
+    const { title } = req.params;
     const targetTopic = await TopicModel.findOne({ title });
     if (!targetTopic)
-      return res.status(404).body({ message: "Topic not found!" });
-    return res.body();
+      return res.status(404).json({ message: "Topic not found!" });
+    return res.json(targetTopic);
   } catch (error) {
     return res.status(400).json({
       error: "Your request could not be processed!",
